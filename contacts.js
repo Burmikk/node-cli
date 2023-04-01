@@ -19,16 +19,19 @@ async function getContactById(contactId) {
 }
 
 async function addContact(name, email, phone) {
-  const allContacts = await listContacts();
-  const newContact = {
-    id: nanoid(),
-    name,
-    email,
-    phone,
-  };
-  const newList = [...allContacts, newContact];
-  await updateContacts(newList);
-  return newContact;
+  if ((name, email, phone)) {
+    const allContacts = await listContacts();
+    const newContact = {
+      id: nanoid(),
+      name,
+      email,
+      phone,
+    };
+    const newList = [...allContacts, newContact];
+    await updateContacts(newList);
+    return newContact;
+  }
+  return "Write all params";
 }
 
 async function removeContact(contactId) {
